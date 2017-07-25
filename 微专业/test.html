@@ -1,0 +1,84 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>弹窗效果</title>
+      <style>
+        body,
+        p {
+          margin: 0;
+        }
+     
+        body {
+          height: 2000px;
+          font: 12px "微软雅黑", "Arial";
+        }
+     
+        .pop-window {
+          position: fixed;
+          width: 300px;
+          border: 1px solid #cccccc;
+          border-radius: 5px;
+          overflow: hidden;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+     
+        .pop-close{
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: 10px;
+          height: 10px;
+          cursor: pointer;
+        }
+     
+        .pop-header {
+          height: 40px;
+          padding: 0 20px;
+          font-size: 14px;
+          line-height: 40px;
+          text-align: center;
+          background-color: #eeeeee;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+     
+        .pop-content {
+          padding: 20px;
+          font: 12px "宋体";
+        }
+     
+        .pop-content p{
+          margin-bottom: 20px;
+          line-height: 1.5em;
+        }
+     
+        .submit {
+          display: block;
+          width: 80px;
+          height: 30px;
+          border-style: none;
+          border-radius: 5px;
+          background-color: #3480c8;
+          color: #fff;
+          text-align: center;
+          margin: 0 auto;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="pop-window">
+        <div class="pop-header">
+          <span>这是一条很长的标题栏，目的是为了显示省略号</span>
+          <img class="pop-close" src="./x.png" alt="关闭">
+        </div>
+        <div class="pop-content">
+          <p>最好的包括音频愿意必然华人理由感谢怀，快车姓名绝对一些经济昆明也要威望上海标志教学在，东莞标签公路我真讨论请教提升生态数量能在如有建材最新药，不好中介每天就算精彩身边负责人小说女友风情绝不本，绿色确定刷新夏天心里硬件填写应当话题电力工人公里太多平均的。</p>
+          <button class="submit">确定</button>
+        </div>
+      </div>
+    </body>
+    </html>

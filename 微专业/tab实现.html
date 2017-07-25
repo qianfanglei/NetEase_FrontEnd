@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>实现一个Tab</title>
+        <style>
+          	body {
+          		font: 14px "微软雅黑", "Arial";
+          	}
+          	ul {
+            	margin: 0;
+            	padding: 0;
+            	list-style:none;  
+          	}
+        	p {
+        		margin: 0; padding: 0;
+          		}
+          	.container {
+            	width: 572px;
+            	height: 200px;
+            	/*
+            	 * 数据未规定， 可换
+            	 */
+            	box-shadow:  0 0 1px #999;
+            	border: 1px solid #999;
+          	}
+          	ul {
+            	display: flex;
+          	}
+          	.tab {
+            	flex: 1;
+            	height: 40px;
+            	line-height: 35px;
+            	border-left: 1px solid #cecece;
+            	border-bottom: 1px solid #cecece;
+            	background-color: #f1f1f1;
+            	text-align: center;
+          	}
+          	ul li:first-child {
+          		border-left: none;
+          	}
+          	ul .active {
+            	border-bottom: none;
+            	background-color: #fff;
+          	}
+          	.content {
+          		height: 119px;
+            	/*
+            	 * container的height减去40px再减上下padding 40px再减ul和div之间的边框1px
+            	 */
+            	padding: 20px;
+            	border-top: none;
+            	background-color: white;
+          	}
+          	p {
+          		height: 100%;
+          		overflow: auto;
+          		word-wrap: break-word;
+          	}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+          	<ul>
+            	<li class="tab active">课程</li>
+            	<li class="tab">学习计划</li>
+            	<li class="tab">技能图谱</li>
+          	</ul>
+        	<div class="content">
+         		<p>课程内容</p>
+         	</div>
+          	
+        </div>
+    </body>
+    </html>

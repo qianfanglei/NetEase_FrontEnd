@@ -1,0 +1,9 @@
+body>div{
+	line-height: 40px;
+}
+.lh2{
+	line-height: 3em;
+}
+.lh3{
+	line-height: 300%;
+}

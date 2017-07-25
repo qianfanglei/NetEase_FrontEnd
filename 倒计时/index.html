@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onClick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+<script type="text/javascript">
+//屏蔽左键文本选择 
+document.onmousedown = function() { 
+    return false; 
+};
+
+document.onselectstart = function() { 
+    return false; 
+}; 
+
+//屏蔽右键
+if (window.Event) 
+document.captureEvents(Event.MOUSEUP);
+
+function nocontextmenu() 
+{ 
+event.cancelBubble = true 
+event.returnValue = false;
+
+return false; 
+}
+
+function norightclick(e) 
+{ 
+if (window.Event) 
+{ 
+if (e.which == 2 || e.which == 3) 
+return false; 
+} 
+else 
+if (event.button == 2 || event.button == 3) 
+{ 
+event.cancelBubble = true 
+event.returnValue = false; 
+return false; 
+}
+
+}
+
+document.oncontextmenu = nocontextmenu; // for IE5+ 
+document.onmousedown = norightclick; // for all others 
+</script>
+
+<meta charset="UTF-8">
+<title>天天计时 在线计时 倒计时</title>
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<script type="text/javascript">
+	var se,m=0,s=0,ss=1,timeStart=0;
+	var pauseTime=0;
+	function GetZTime()
+	{
+		var timeNow = Date.now();
+		ss = timeNow-timeStart;
+   	    var m = Math.floor(ss / (1000 * 60)) % 60;  
+		 
+        var s = Math.floor(ss / 1000) % 60;  
+  		 //百位十位毫秒数
+     	var ss = Math.floor(ss % 1000/10);
+		var xx = Math.floor(m / 60);  
+		if(m<10){ m = "0" + m; }
+		if(s<10){ s = "0" + s; }
+		if(xx<10){ xx = "0" + xx; }
+		if(ss<10){ss="0"+ ss; }
+		var t = xx+" : "+m+" : "+s+" : "+ss;
+		document.getElementById("time1").innerHTML=t;
+		//document.getElementById("_time1").innerHTML=t
+	}
+	
+
+</script>
+<script>
+var se1,m1=0,h1=0,s1=0,ss1=60*60*1000;
+<!-- ss1=10000; -->
+var NowTime =0;  
+var EndTime= 0;  //截止时间：为固定时间
+var pauseTime2=0;//暂停时间  
+function GetRTime()  
+{  
+    NowTime = new Date();  
+    var nMS = EndTime.getTime() - NowTime.getTime();  
+
+    var nD = Math.floor(nMS / (1000 * 60 * 60 * 24));  
+    var nH = Math.floor(nMS / (1000 * 60 * 60)) % 24;  
+    var nM = Math.floor(nMS / (1000 * 60)) % 60;  
+    var nS = Math.floor(nMS / 1000) % 60;  
+	//var nx = Math.floor(nMS / 1000  % 60;  
+		//alert(nH);
+   /* var nSS = Math.floor(nMS /100) % 10;  */
+   //百位十位毫秒数
+   var nSS = Math.floor(nMS % 1000/10);
+   // var nx =Math.floor(nM / 60) ; 
+   // var nx = Math.floor(nMS % 1000/10);
+    if (nD >= 0)  
+    {  
+
+		if(nD<10){ nD = "0" + nD; }
+		if(nH<10){ nH = "0" + nH; }
+		if(nM<10){ nM = "0" + nM; }
+		if(nS<10){ nS = "0" + nS; }
+		if(nSS<10){nSS="0"+ nSS; }
+		//if(nx<10){nx="0"+ nx; }
+		var t = nH+" : "+nM+" : "+nS+" : "+nSS;
+		
+		//document.getElementById("time2").innerHTML = t;
+		//document.getElementById("_time2").innerHTML = t;
+		//document.getElementById("spanx").innerHTML = nx;
+		document.getElementById("spanH").innerHTML = nH;
+		document.getElementById("spanM").innerHTML = nM;
+		document.getElementById("spanS").innerHTML = nS;
+		document.getElementById("spanSS").innerHTML = nSS;
+		
+    }  
+    else {  
+      /*  document.getElementById("time2").innerHTML = "00 : 00 : 00";
+		document.getElementById("time2").className = "timeOut";*/
+		//document.getElementById("_time2").innerHTML = "00 : 00 : 00";
+		$('.djsTime').html('00').addClass("timeOut");
+		//$("#djs .timeBtn:eq(1)").prop("name","start").html("开始");
+		$("#djs .timeBtn:eq(3)").prop("name","pause").html("暂停");
+		clearTimeout(sel); 
+    }  
+    se1=setTimeout("GetRTime()", 20);  
+}   
+</script>
+
+<style type="text/css">
+.timeInit{
+	color:#000;	
+}
+.disableBtn{
+	background-color:#EAEAEA;
+	color:#CCC;
+	border:#CCC 2px solid;
+	cursor:none;
+}
+@font-face{
+   font-family: 'MyriadSetPro';
+   src:url('ipfont/MyriadSetPro-Ultralight.ttf');
+   font-weight:200;
+}
+.tabBlock-pane{
+   font-family: 'MyriadSetPro';
+   src:url('ipfont/MyriadSetPro-Ultralight.ttf');
+   font-weight:200;
+   font-size:100px;	
+}
+.timeOut{
+	color:red;
+}
+
+.tabHead{
+	width:160px;
+	margin:0 auto;
+	
+}
+
+span input{
+width: 195px;
+height: 217px;
+font-size: 200px;
+font-family: 'MyriadSetPro';
+/*background: #F4F4F4;*/
+background:#E5E5E5;
+border:none;
+-ms-ime-mode:disabled;
+-moz-ime-mode:disabled;
+-webkit-ime-mode:disabled;
+-o-ime-mode:disabled;
+ime-mode:disabled;
+}
+.kf{
+	position:absolute;
+	top:30px;
+	height:80px;
+	width:800px;
+	left: 242px;
+}
+.kf button{
+	height:74px;
+	width:74px;
+	float:right;
+	/*margin-right:5px;*/
+	border-radius:37px;	
+	cursor:pointer;
+	font-family: 'MyriadSetPro';
+}
+</style>
+
+<script type="text/javascript">
+    /*960*90 创建于 2017/4/14*/
+    var cpro_id = "u2954892";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+<!-- xxhd.net.cn Baidu tongji analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?46a0f290cc4be6af7af8cca40c750511";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body style="background: none repeat scroll 0% 0% #F4F4F4;">
+
+<figure class="tabBlock">
+<div class="tabHead" style="display:none;">
+<ul class="tabBlock-tabs">
+<li class="tabBlock-tab is-active" control="jsq" style="font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');">计时器</li>
+<!--<li class="tabBlock-tab">倒计时</li>-->
+</ul>
+</div>
+
+<div class="kf"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=604647285&amp;site=qq&amp;menu=yes" target="_blank">
+  <button class="timeBtn" style="margin-right:5px;">QQ</button></a></div>
+
+<div class="tabBlock-content">
+
+<div class="tabBlock-pane">
+<p><div style="font-size:180px; margin-top:50px; color:red;"><div style="width:1050px;margin:0 auto;"><span id="time1">00 : 00 : 00 : 00</span>
+
+
+
+</div></div></p>
+
+<!-- progress button -->
+<div class="progress-button" style="width:950px; margin-left:7px;" id="jsq">
+
+<button style="width:150px; float:left; margin-right:40px;cursor:pointer; font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');color: #1ECD97;border: 2px solid #1ECD97;" class="timeBtn" control="jsq">倒计时</button>
+
+<button style="width:150px; float:left; margin-left:188px;cursor:pointer; font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');" class="timeBtn" name="start">开始</button>
+<button style="width:150px; float:left; margin-left:40px; cursor:pointer;font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');"  class="timeBtn" name="pause">暂停</button>
+</div><!-- /progress-button -->	
+</div>
+
+
+<div class="tabBlock-pane">
+<p><div style="font-size:190px; margin-top:50px; color:#000;"><div style="width:1250px;margin:0 auto; position:relative"><!--<span id="time2">10 : 00 : 00</span>-->
+<span id="spanH" class="djsTime">00</span> : <span id="spanM" class="djsTime">00</span> : <span id="spanS" class="djsTime">00</span> : <span id="spanSS" class="djsTime">00</span>
+
+</div></div></p>
+<!-- progress button -->
+<div class="progress-button" style="width:965px; margin-left:7px;" id="djs">
+
+<button style="width:150px; float:left; margin-right:40px;cursor:pointer; font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');color: #1ECD97;border: 2px solid #1ECD97;" class="timeBtn" control="djs">顺计时</button>
+
+<button style="width:150px; float:left; margin-right:40px;cursor:pointer; font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf'); color:#00C;border: 2px solid #00C;" class="timeBtn" name="zdy">自定义</button>
+<button style="width:150px; float:left; margin-right:40px;cursor:pointer; font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');" class="timeBtn" name="start">开始</button>
+<button style="width:150px; float:left; cursor:pointer;font-family:'Hiragino Sans GB W3'; src:url('ipfont/苹果丽黑w3.otf');"  class="timeBtn" name="pause">暂停</button>
+</div><!-- /progress-button -->	
+</div>
+
+
+
+</div>
+</figure>
+
+<script src='js/jquery.js'></script>
+<script src="js/index.js"></script>
+    <script type="text/javascript">
+    $(function()
+	{
+		$("#jsq .timeBtn:eq(1)").click(function()
+		{
+			if($(this).prop("name")=="start")
+			{
+				timeStart = Date.now();
+				se=setInterval("GetZTime()",1);
+				$(this).prop("name","reset").html("重置");
+				$("#time1").addClass("timeInit");
+				//$('.tabBlock-pane span[id$="time1"]').addClass("timeInit");
+			}
+			else
+			{
+				clearInterval(se);ss=1;m=s=0;
+			$("#time1").html("00 : 00 : 00 : 00").removeClass("timeInit");
+					//$('.tabBlock-pane span[id$="time1"]').html("00 : 00 : 00").removeClass("timeInit");
+				$(this).prop("name","start").html("开始");
+				$("#jsq .timeBtn:eq(2)").prop("name","pause").html("暂停");
+			}
+			
+			
+	    });
+		$("#jsq .timeBtn:eq(2)").click(function()
+		{
+			if($("#jsq .timeBtn:eq(1)").prop("name")=="start") return false;
+			if($(this).prop("name")=="pause")
+			{
+				clearInterval(se);	
+				pauseTime = Date.now();
+				$(this).prop("name","continue").html("继续");
+				//$("#time1").addClass("timeInit");
+			
+			}
+			else
+			{
+				clearInterval(se);
+				timeStart = Date.now()-(pauseTime-timeStart);
+				se=setInterval("GetZTime()",1);
+				$(this).prop("name","pause").html("暂停");
+				//$("#time1").addClass("timeInit");
+				
+			}
+			
+			
+	    });
+		
+	
+		
+		
+		
+		
+		
+		/*---------------------------------------------------*/
+		//倒计时
+		//开始重置按钮
+		$("#djs .timeBtn:eq(2)").click(function()
+		{
+			if($("#djs .timeBtn:eq(1)").prop("name")!='zdy')return false;
+			if($(this).prop("name")=="start")
+			{
+				//EndTime = new Date(Date.now()+ss1);
+				var timeShowNow = 
+				parseInt($("#spanH").html())*60*60000+parseInt($("#spanM").html())*60*1000+parseInt($("#spanS").html())*1000+parseInt($("#spanSS").html());
+				EndTime = new Date(Date.now()+timeShowNow);
+				GetRTime();
+				$(this).prop("name","reset").html("重置");
+				//$("#time2").addClass("timeInit");
+				//$('.tabBlock-pane span[id$="time2"]').addClass("timeInit");
+				$(".djsTime").addClass("timeInit");
+			}
+			else
+			{
+				EndTime = new Date();
+				clearTimeout(se1);	
+				//$("#time2").removeClass("timeInit").html("10 : 00 : 00");
+				$(".djsTime").removeClass("timeOut").html("00").eq(0).html("10");
+				//$('.tabBlock-pane span[id$="time2"]').removeClass("timeInit").html("10 : 00 : 00");
+				$(this).prop("name","start").html("开始");
+				$("#djs .timeBtn:eq(3)").prop("name","pause").html("暂停");
+			}
+			
+			
+	    });
+		//暂停,继续按钮
+		$("#djs .timeBtn:eq(3)").click(function()
+		{
+			if($("#djs .timeBtn:eq(2)").prop("name")=="start") return false;
+			if($(this).prop("name")=="pause")
+			{
+				clearTimeout(se1);
+				$(this).prop("name","continue").html("继续");
+			}
+			else
+			{
+				clearTimeout(se1);	
+				/*arrTime = $("#time2").html().split(":");
+				var timeShowNow = parseInt(arrTime[0])*60*1000+parseInt(arrTime[1])*1000+parseInt(arrTime[0]);*/
+				var timeShowNow = parseInt($("#spanH").html())*60*60000+parseInt($("#spanM").html())*60*1000+parseInt($("#spanS").html())*1000+parseInt($("#spanSS").html());
+				EndTime = new Date(Date.now()+timeShowNow);
+				se1=setTimeout("GetRTime()", 20); 
+				$(this).prop("name","pause").html("暂停");
+				
+			}
+			
+			
+	    });
+		//自定义,确定按钮
+		$("#djs .timeBtn:eq(1)").click(function()
+		{
+				if($("#djs .timeBtn:eq(2)").prop("name")!="start")return false;
+				if($(this).prop("name")=='zdy')
+				{
+					if(!$('.djsTime').find("input")[0])
+					{
+						$('.djsTime').html($("<input>"));	
+						$(this).prop("name","qd").html("确定");
+					}
+					$('.djsTime').find("input").eq(0).focus();
+				}
+				else
+				{
+						$('.djsTime').each(function(index, element) {
+							var val = $(this).find("input").val();
+							val =val==""?'00':val;
+                            $(this).html(val);
+                        });
+						$(this).prop("name","zdy").html("自定义");
+						
+				}
+			
+			
+		});
+		/*$('.djsTime').click(function()
+		{
+			if($('#djs .timeBtn:eq(2)').prop("name")!="start")
+			{
+				return false;	
+			}
+			if(!$(this).find("input")[0])
+			{
+			//var time = $(this).html();
+			$(this).html($("<input>")).find("input").focus().val('');//这样焦点才在后面
+			}
+			
+		});*/
+		$('.djsTime').on("keypress","input",function(event){
+			var keyCode=window.event ? window.event.keyCode : event.which;
+			if(($(this).val().length==2)&&(keyCode!=8))
+			{
+			
+				if(document.all)
+				{
+				window.event.returnValue = false;
+				}
+				else
+				{
+					event.preventDefault();
+				}
+				return false;
+				
+			}
+			
+			
+			//alert(keyCode);//0-9      48-57
+			//alert(keyCode);
+			 //event.returnValue = false; 
+			 if(((keyCode>47)&&(keyCode<58))||(keyCode==8))
+		　　 {
+		　　 	 window.event.returnValue = true;  
+		　　 }
+		　　 else
+		　　 {
+		　　		if(document.all)
+				{
+					window.event.returnValue = false;
+				}
+				else
+				{
+					event.preventDefault();
+				}
+		　　 } 
+			
+			
+		});
+		$('.djsTime').on("keyup","input",function(event){
+			$(this).val($(this).val().replace(/[^\d]/g,''));
+			if($('.djsTime input').index($(this))<2&&$(this).val()>59)
+			{
+				$(this).val(59);	
+			}
+			
+		});
+		$('.djsTime').on("blur","input",function(event){
+			if(/[0-9]{1,2}/.test($(this).val()))
+			{
+				if($(this).val().length==1)
+				{
+					//$(this).parent().html('0'+$(this).val());	
+					$(this).val('0'+$(this).val());
+				}
+				else
+				{
+				if($('.djsTime input').index($(this))<2)
+					$(this).val($(this).val()>59?59:$(this).val());
+				}
+			}
+			else
+				$(this).val('00');
+		})
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	})
+    
+    </script>
+    <!-- 客服-->
+    
+    
+<script type="text/javascript">
+    /*120*120 创建于 2016-04-26*/
+var cpro_id = "u2618984";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+</body>
+</html>
