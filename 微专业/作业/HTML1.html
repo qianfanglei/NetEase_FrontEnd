@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>畅销书排行榜</title>
+		<style type="text/css">
+			div{
+				width: 270px;
+				height: 600px;
+				padding: 0;
+				margin: 20px auto;
+				font: "微软雅黑" 15px;
+			}
+			ul{list-style-type: none;}
+			li{display: block;height: 48px;cursor: pointer;}
+			li:hover{color: #f00;}
+			h4{line-height: 4em;margin: 0;border-bottom: 1px solid darkgray;}
+			li p{
+				line-height: 3em;
+				margin: 0;
+				border-bottom: 1px dotted lightgray;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow:ellipsis;
+			}
+			ul li:last-child p{border-bottom: none;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul >
+				<h4>图书畅销榜</h4>
+				<li><p title="当我足够好，才会遇见你"> 1&nbsp;&nbsp;&nbsp;当我足够好，才会遇见你</p></li>
+				<li><p title="皮囊"> 2&nbsp;&nbsp;&nbsp;皮囊</p></li>
+				<li><p title="李光耀论中国与世界"> 3&nbsp;&nbsp;&nbsp;李光耀论中国与世界</p></li>
+				<li><p title="乖，摸摸头"> 4&nbsp;&nbsp;&nbsp;乖，摸摸头</p></li>
+				<li><p title="男女内参"> 5&nbsp;&nbsp;&nbsp;男女内参</p></li>
+			</ul>
+		</div>
+	</body>
+</html>
