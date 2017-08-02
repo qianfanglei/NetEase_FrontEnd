@@ -347,7 +347,7 @@
  		
 	<div style = "width: 81%;word-break:break-all;">font: [[&lt;font-style>||&lt;font-variant>||&lt;font-weight>||&lt;font-strench>]?&lt;font-size>[/&lt;line-height>]?&lt;font-family>]|caption|icon|menu|message-box|small-caption|status-bar</div>
 如：`font:30px/2 "Consolas",monospace;`  
-如：`font:italic bold 20px/1.5 arial,serif;`
+如：`font:italic bold 20px/1.5 arial,serif;`  
 这就错了：`font:100px;`  
 至少要有font-size和font-family
 
