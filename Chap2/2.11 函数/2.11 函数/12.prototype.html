@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>prototype</title>
-</head>
-<body>
-	<script>
-		function Point(x, y){
-			this.x = x;
-			this.y = y;
-		}
-		
-		Point.prototype.move = function(stepX, stepY){
-			this.x += stepX;
-			this.y += stepY;
-		};
-
-		var point = new Point(1, 1);
-		console.log(point);
-		point.move();
-		console.log(point);
-	</script>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>表单</title>
+        <style type="text/css">
+            #sign{
+                width: 300px;
+                height: 3em;
+                overflow: hidden;
+                 
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#" method="post">
+            <table border="0" cellspacing="0" cellpadding="10">
+                <tr><td>头像</td><td style="font-size: smaller;"><button name="img">选择文件</button>&nbsp;未选择任何文件</td></tr>
+                <tr><td>昵称</td><td><input type="text" id="userName" value="" /></td></tr>
+                <tr><td>学历</td><td><select name="xueli">
+                    <option value="xueli">大专</option>
+                    <option value="xueli">本科</option>
+                </select></td></tr>
+                 
+                <tr><td>性别</td><td><input type="radio" name="sex" id="sex" value="sex" checked/>男 <input type="radio" name="sex" id="sex" value="sex" />女</td></tr>
+                <tr><td>爱好</td><td><input type="checkbox" name="habbit" checked/>电影<input type="checkbox" name="habbit" />摄影<input type="checkbox" name="habbit" />音乐<input type="checkbox" name="habbit" checked/>阅读</td></tr>
+                <tr valign="top"><td>签名</td><td><input type="text" id="sign" /></td></tr>
+                <tr><td></td><td><button style="width: 120px;height: 45px;background-color: rgb(216,83,183);color: white;font-weight: bold;font-size: large;">保 存</button></td></tr>
+            </table>
+        </form>
+    </body>
 </html>
